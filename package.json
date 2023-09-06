@@ -14,7 +14,9 @@
     "mochawesome-merge": "npx mochawesome-merge cypress/results/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json",
     "delete-mochawesome-report": "rimraf mochawesome-report\\* || true",
     "cypress-regression-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run triggerAllTests-headless && npm run mochawesome-merge",
-    "triggerAllTests-staging": "npx cypress run --env configFiles=staging"
+    "triggerAllTests-staging": "npx cypress run --env configFiles=staging",
+    "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
+    "cypress-multi-browser": "npm run triggerAllTests-autoTestStore -- --browser electron --headed & npm run triggerAllTests-autoTestStore -- --browser edge --headed"
   },
   "author": "ygalitsyna",
   "license": "ISC",
